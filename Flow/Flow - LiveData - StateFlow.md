@@ -1,4 +1,3 @@
-# Flow - LiveData - StateFlow
 
 ## LiveData - Flow - StateFlow
 
@@ -7,6 +6,8 @@
 🔗 링크 : https://onlyfor-me-blog.tistory.com/557
 
 🔗 링크 : https://readystory.tistory.com/207
+
+<br/>
 
 ### LiveData
 
@@ -17,6 +18,8 @@ LiveData는 Observable data holder class. 생명주기를 인식함. → (다른
 즉 데이터 관련 작업은 main 스레드가 아닌 worker 스레드에서 작동되어야 하는데 라이브 데이터로만 작업하면 이 방식이 불가능함. 
 
 또한 클린 아키텍처 관점에서도 이 방식이 좋지 않음. 왜냐하면 Domain Layer는 Android Component에 dependency가 없어야 함. 그러나 멀티 모듈 사용시 LiveData로 구현하려고 한다면 해당 domain 모듈에 android component인 livedata의 Import가 필요함. 
+
+<br/>
 
 ### LiveData - Flow
 
@@ -30,6 +33,8 @@ LiveData는 Observable data holder class. 생명주기를 인식함. → (다른
 - Flow는 스스로 안드로이드 생명주기를 알지 못함. 따라서 생명주기에 따른 정지와 restart가 어려움.
 - Flow는 상태가 없어 값이 할당됐는지 현재 값은 무엇인지 알기 어려움. 그냥 받고 넘겨주기만 하는 역할.
 - Flow는 콜드스트림 방식. **연속해서 계속 들어오는 데이터를 처리할 수 없고 collect 되었을 때만 생성되고 값을 반환한다.** 만약 하나의 Flow Builder에 대해 다수의 collector가 있다면 collector 하나마다 하나씩 데이터를 호출하기 때문에 비용이 비싼 DB 접근, 서버 통신 등을 수행한다면 여러 번 리소스 요청을 하게 될 수 있다. → 이 부분 그냥 복붙해왔는데 이해가 안됨. 그래서 왜 이게 단점인지 모르겠음.
+
+<br/>
 
 ### StateFlow
 
@@ -102,6 +107,8 @@ StateFlow와 LiveData의 차이점
 - StateFlow의 경우 초기 상태를 생성자에게 전달해야 하지만 LiveData는 전달하지 않음.
 - View가 Stopped 상태가 되면 LiveData.observe()는 소비자를 자동으로 등록 취소하지만 StateFlow는 다른 Flow에서 수집하고 있다면 자동으로 중지하지 않음.
 
+<br/>
+
 ### StateFlow build
 
 ```kotlin
@@ -126,6 +133,7 @@ class ExViewModel(): ViewModel() {
     - Eagerly : 즉시 시작되며 scope가 취소되면 중지
     - WhileSubscribed : collector가 없을 때 upstream flow를 취소함. 앱이 백그라운드로 전환되면 취소하게 하는 등의 전략이 가능하다고 함…
     
+    <br/>
 
 ### Livedata 대비 StateFlow의 이점
 

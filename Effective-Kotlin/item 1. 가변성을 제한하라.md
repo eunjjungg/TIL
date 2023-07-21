@@ -87,7 +87,7 @@ fun main() {
 
 ### 가변 컬렉션과 읽기 전용 컬렉션 구분하기
 
-![image](https://github.com/eunjjungg/TIL/assets/100047095/c96bce72-6d61-429e-8cba-cd890d81ab9a)
+![image](https://github.com/eunjjungg/TIL/assets/100047095/d519ecd0-178c-4fb0-9e2c-1c94ab947227)
 
 - 코틀린은 읽고 쓸 수 있는 컬렉션과 읽기 전용 컬렉션으로 나뉨. 위 사진에서 좌측은 읽기 전용으로 변경을 위한 메소드가 없지만 우측과 같이 mutable이 붙은 collection들은 읽고 쓸 수 있는 컬렉션임.
     - mutable이 붙은 인터페이스는 대응되는 읽기 전용 인터페이스를 상속 받아서 변경을 위한 메소드를 추가한 것임.
